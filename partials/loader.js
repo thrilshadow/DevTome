@@ -1,5 +1,9 @@
-const inject = async (id, path, append = false) => {
-  const res = await fetch(path);
+// Resolve partial URLs relative to this loader module
+const baseURL = new URL('.', import.meta.url);
+
+const inject = async (id, file, append = false) => {
+  const url = new URL(file, baseURL);
+  const res = await fetch(url);
   const html = await res.text();
   const mount = document.getElementById(id);
 
