@@ -40,6 +40,11 @@ export function makeDebugConsoleDraggable() {
   const consoleEl = document.getElementById("debugConsole");
   const headerEl = document.getElementById("debugHeader");
 
+if (!consoleEl || !headerEl) {
+    console.warn("Debug console elements not found; draggable setup skipped.");
+    return;
+  }
+  
   let offsetX = 0, offsetY = 0, isDragging = false;
 
   function moveConsole(x, y) {
