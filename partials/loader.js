@@ -19,9 +19,9 @@ const inject = async (id, file, append = false) => {
 };
 
 export async function loadPartials() {
-   // Use relative paths so the site works from any base URL
-  await inject("headerMount", "./partials/header.html");
-  await inject("debugMount", "./partials/debug.html");
-  await inject("fabMount", "./partials/fab.html");
-  await inject("fabMount", "./partials/fabMenu.html", true); // ✅ append it
+  // Use filenames relative to this loader module
+  await inject("headerMount", "header.html");
+  await inject("debugMount", "debug.html");
+  await inject("fabMount", "fab.html");
+  await inject("fabMount", "fabMenu.html", true); // ✅ append it
 }
